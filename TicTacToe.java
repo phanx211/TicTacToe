@@ -15,7 +15,7 @@ public class TicTacToe {
 		while (!checkWin()) {
 			round++;
 			System.out.print("Select your space: ");
-			String coord = scanner.next();
+			String coord = scanner.neboardt();
 			System.out.println();
 			ParseCoord(coord);
 			if (CheckWinner()) {
@@ -26,11 +26,11 @@ public class TicTacToe {
 		}
 	}
 
-	static void printBoard(char[][] x) {
-		for (int i = 0; i < x.length; i++) {
+	static void printBoard(char[][] board) {
+		for (int i = 0; i < board.length; i++) {
 			System.out.print("| ");
-			for (int j = 0; j < x[i].length; j++) {
-				System.out.print(x[i][j]);
+			for (int j = 0; j < board[i].length; j++) {
+				System.out.print(board[i][j]);
 				System.out.print(" | ");
 			}
 			System.out.println();
@@ -62,23 +62,23 @@ public class TicTacToe {
 	    return false;
     }
 
-	static boolean CheckColumnWinner(char[][] x) {
-		if ((x[0][0] == 'X') && (x[1][0] == 'X') && (x[2][0] == 'X')) {
+	static boolean CheckColumnWinner() {
+		if ((board[0][0] == 'X') && (board[1][0] == 'X') && (board[2][0] == 'X')) {
 			return true;
 		}
-		else if ((x[0][0] == 'O') && (x[1][0] == 'O') && (x[2][0] == 'O')) {
+		else if ((board[0][0] == 'O') && (board[1][0] == 'O') && (board[2][0] == 'O')) {
 			return true;
 		}
-		else if ((x[0][1] == 'X') && (x[1][1] == 'X') && (x[2][1] == 'X')) {
+		else if ((board[0][1] == 'X') && (board[1][1] == 'X') && (board[2][1] == 'X')) {
 			return true;
 		}
-		else if ((x[0][1] == 'O') && (x[1][1] == 'O') && (x[2][1] == 'O')) {
+		else if ((board[0][1] == 'O') && (board[1][1] == 'O') && (board[2][1] == 'O')) {
 			return true;
 		}
-		else if ((x[0][2] == 'X') && (x[1][2] == 'X') && (x[2][2] == 'X')) {
+		else if ((board[0][2] == 'X') && (board[1][2] == 'X') && (board[2][2] == 'X')) {
 			return true;
 		}
-		else if ((x[0][2] == 'O') && (x[1][2] == 'O') && (x[2][2] == 'O')) {
+		else if ((board[0][2] == 'O') && (board[1][2] == 'O') && (board[2][2] == 'O')) {
 			return true;
 		}
 		else {
@@ -86,17 +86,17 @@ public class TicTacToe {
 		}
 	}
 
-	static boolean CheckDiagonalWinner(char[][] x) {
-		if ((x[0][0] == 'X') && (x[1][1] == 'X') && (x[2][2] == 'X')) {
+	static boolean CheckDiagonalWinner() {
+		if ((board[0][0] == 'X') && (board[1][1] == 'X') && (board[2][2] == 'X')) {
 			return true;
 		}
-		else if ((x[0][0] == 'O') && (x[1][1] == 'O') && (x[2][2] == 'O')) {
+		else if ((board[0][0] == 'O') && (board[1][1] == 'O') && (board[2][2] == 'O')) {
 			return true;
 		}
-		else if ((x[0][3] == 'X') && (x[1][1] == 'X') && (x[2][0] == 'X')) {
+		else if ((board[0][3] == 'X') && (board[1][1] == 'X') && (board[2][0] == 'X')) {
 			return true;
 		}
-		else if ((x[0][3] == 'O') && (x[1][1] == 'O') && (x[2][0] == 'O')) {
+		else if ((board[0][3] == 'O') && (board[1][1] == 'O') && (board[2][0] == 'O')) {
 			return true;
 		}
 		else {
