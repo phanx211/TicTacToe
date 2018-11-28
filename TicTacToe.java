@@ -18,7 +18,7 @@ public class TicTacToe {
 			String coord = scanner.next();
 			System.out.println();
 			ParseCoord(coord);
-			if (CheckWinner(board)) {
+			if (CheckWinner()) {
 				System.out.println("Congratulations!!");
 				break;
 			}
@@ -46,10 +46,21 @@ public class TicTacToe {
 		}
 	}
 
-	static boolean CheckWinner(char[][] x) {
-
+	static boolean CheckWinner() {
+        if (CheckRowWinner() || CheckColumnWinner() || CheckDiagWinner()) {
+            return true;
+        }
 		return false;
 	}
+
+	static boolean CheckRowWinner() {
+	    for (int i = 0; i < 3; i++) {
+	        if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != ' ') {
+	            return true;
+            }
+        }
+	    return false;
+    }
 	
 	static boolean checkWin() {
 		if (round < 5)
