@@ -14,7 +14,12 @@ public class TicTacToe {
 		printBoard(board);
 		while (!checkWin()) {
 			round++;
-			System.out.print("Select your space: ");
+			if (round % 2 == 0) {
+                System.out.print("Select your space O: ");
+            } else {
+                System.out.print("Select your space X: ");
+            }
+
 			String coord = scanner.next();
 			System.out.println();
 			ParseCoord(coord);
