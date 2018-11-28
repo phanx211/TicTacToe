@@ -2,17 +2,16 @@ import java.util.*;
 
 public class TicTacToe {
 
-	static char[][] board = {{' ',' ',' '},
+	private static char[][] board = {{' ',' ',' '},
 			{' ',' ',' '},
 			{' ',' ',' '}};
 
-	static int round = 0;
+	private static int round = 0;
 
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
-		System.out.println(checkWin());
 		printBoard(board);
-		while (!checkWin()) {
+		while (!CheckWinner()) {
 			round++;
 			if (round % 2 == 0) {
                 System.out.print("Select your space O: ");
@@ -73,10 +72,7 @@ public class TicTacToe {
 	}
 
 	static boolean CheckWinner() {
-        if (CheckRowWinner() || CheckColumnWinner() || CheckDiagonalWinner()) {
-            return true;
-        }
-		return false;
+        return CheckRowWinner() || CheckColumnWinner() || CheckDiagonalWinner();
 	}
 
 	static boolean CheckRowWinner() {
@@ -119,10 +115,10 @@ public class TicTacToe {
 		else if ((board[0][0] == 'O') && (board[1][1] == 'O') && (board[2][2] == 'O')) {
 			return true;
 		}
-		else if ((board[0][3] == 'X') && (board[1][1] == 'X') && (board[2][0] == 'X')) {
+		else if ((board[0][2] == 'X') && (board[1][1] == 'X') && (board[2][0] == 'X')) {
 			return true;
 		}
-		else if ((board[0][3] == 'O') && (board[1][1] == 'O') && (board[2][0] == 'O')) {
+		else if ((board[0][2] == 'O') && (board[1][1] == 'O') && (board[2][0] == 'O')) {
 			return true;
 		}
 		else {
@@ -130,11 +126,4 @@ public class TicTacToe {
 		}
 	}
 
-	static boolean checkWin() {
-		if (round < 5)
-			return false;
-		else
-			return true;
-
-	}
 }
