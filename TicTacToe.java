@@ -19,7 +19,13 @@ public class TicTacToe {
 			System.out.println();
 			ParseCoord(coord);
 			if (CheckWinner()) {
-				System.out.println("Congratulations!!");
+			    printBoard(board);
+			    if (round % 2 == 0) {
+                    System.out.println("Congratulations! O wins!");
+                } else {
+                    System.out.println("Congratulations! X wins!");
+                }
+
 				break;
 			}
 			printBoard(board);
@@ -38,16 +44,31 @@ public class TicTacToe {
 	}
 
 	static void ParseCoord(String coord) {
-		String[] split = coord.split(",");
-		if (round % 2 == 0) {
-			board[Integer.parseInt(split[0])][Integer.parseInt(split[1])] = 'O';
-		} else {
-			board[Integer.parseInt(split[0])][Integer.parseInt(split[1])] = 'X';
-		}
+	    try {
+            String[] split = coord.split(",");
+            int x = Integer.parseInt(split[0]);
+
+            if (Integer.parseInt((split[0])) < 0 || Integer.parseInt(split[0]) > 2 || Integer.parseInt(split[1]) < 0 || Integer.parseInt(split[1]) > 2) {
+                round--;
+                System.out.println("Incorrect format. Enter input as \"x,y\" where 0 <= x,y < 3");
+            } else if (board[Integer.parseInt(split[0])][Integer.parseInt(split[1])] != ' ') {
+                round--;
+                System.out.println("Space taken.. Try again: ");
+            } else {
+                if (round % 2 == 0) {
+                    board[Integer.parseInt(split[0])][Integer.parseInt(split[1])] = 'O';
+                } else {
+                    board[Integer.parseInt(split[0])][Integer.parseInt(split[1])] = 'X';
+                }
+            }
+        } catch (Exception e) {
+            round--;
+            System.out.println("Incorrect format. Enter input as \"x,y\" where x,y are integers: ");
+        }
 	}
 
 	static boolean CheckWinner() {
-        if (CheckRowWinner() || CheckColumnWinner() || CheckDiagonalWinner()) {
+        if (CheckRowWinner() || CheckColumnWinner(board) || CheckDiagonalWinner(board)) {
             return true;
         }
 		return false;
@@ -93,10 +114,10 @@ public class TicTacToe {
 		else if ((x[0][0] == 'O') && (x[1][1] == 'O') && (x[2][2] == 'O')) {
 			return true;
 		}
-		else if ((x[0][3] == 'X') && (x[1][1] == 'X') && (x[2][0] == 'X')) {
+		else if ((x[0][2] == 'X') && (x[1][1] == 'X') && (x[2][0] == 'X')) {
 			return true;
 		}
-		else if ((x[0][3] == 'O') && (x[1][1] == 'O') && (x[2][0] == 'O')) {
+		else if ((x[0][2] == 'O') && (x[1][1] == 'O') && (x[2][0] == 'O')) {
 			return true;
 		}
 		else {
