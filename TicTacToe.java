@@ -68,7 +68,7 @@ public class TicTacToe {
 	}
 
 	static boolean CheckWinner() {
-        if (CheckRowWinner() || CheckColumnWinner(board) || CheckDiagonalWinner(board)) {
+        if (CheckRowWinner() || CheckColumnWinner() || CheckDiagonalWinner()) {
             return true;
         }
 		return false;
@@ -83,23 +83,23 @@ public class TicTacToe {
 	    return false;
     }
 
-	static boolean CheckColumnWinner(char[][] x) {
-		if ((x[0][0] == 'X') && (x[1][0] == 'X') && (x[2][0] == 'X')) {
+	static boolean CheckColumnWinner() {
+		if ((board[0][0] == 'X') && (board[1][0] == 'X') && (board[2][0] == 'X')) {
 			return true;
 		}
-		else if ((x[0][0] == 'O') && (x[1][0] == 'O') && (x[2][0] == 'O')) {
+		else if ((board[0][0] == 'O') && (board[1][0] == 'O') && (board[2][0] == 'O')) {
 			return true;
 		}
-		else if ((x[0][1] == 'X') && (x[1][1] == 'X') && (x[2][1] == 'X')) {
+		else if ((board[0][1] == 'X') && (board[1][1] == 'X') && (board[2][1] == 'X')) {
 			return true;
 		}
-		else if ((x[0][1] == 'O') && (x[1][1] == 'O') && (x[2][1] == 'O')) {
+		else if ((board[0][1] == 'O') && (board[1][1] == 'O') && (board[2][1] == 'O')) {
 			return true;
 		}
-		else if ((x[0][2] == 'X') && (x[1][2] == 'X') && (x[2][2] == 'X')) {
+		else if ((board[0][2] == 'X') && (board[1][2] == 'X') && (board[2][2] == 'X')) {
 			return true;
 		}
-		else if ((x[0][2] == 'O') && (x[1][2] == 'O') && (x[2][2] == 'O')) {
+		else if ((board[0][2] == 'O') && (board[1][2] == 'O') && (board[2][2] == 'O')) {
 			return true;
 		}
 		else {
@@ -107,17 +107,17 @@ public class TicTacToe {
 		}
 	}
 
-	static boolean CheckDiagonalWinner(char[][] x) {
-		if ((x[0][0] == 'X') && (x[1][1] == 'X') && (x[2][2] == 'X')) {
+	static boolean CheckDiagonalWinner() {
+		if ((board[0][0] == 'X') && (board[1][1] == 'X') && (board[2][2] == 'X')) {
 			return true;
 		}
-		else if ((x[0][0] == 'O') && (x[1][1] == 'O') && (x[2][2] == 'O')) {
+		else if ((board[0][0] == 'O') && (board[1][1] == 'O') && (board[2][2] == 'O')) {
 			return true;
 		}
-		else if ((x[0][2] == 'X') && (x[1][1] == 'X') && (x[2][0] == 'X')) {
+		else if ((board[0][3] == 'X') && (board[1][1] == 'X') && (board[2][0] == 'X')) {
 			return true;
 		}
-		else if ((x[0][2] == 'O') && (x[1][1] == 'O') && (x[2][0] == 'O')) {
+		else if ((board[0][3] == 'O') && (board[1][1] == 'O') && (board[2][0] == 'O')) {
 			return true;
 		}
 		else {
